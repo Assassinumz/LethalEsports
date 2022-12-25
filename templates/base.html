@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lethal{% endblock %}</title>
+
+    <link rel="icon" href={% static 'favicon.png' %} />
+    <link rel='stylesheet' href={% static 'normalize.css' %} />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href={% static 'slick-theme.css' %} />
+
+    <link rel='stylesheet' href={% static 'styles.css' %} />
+
+    <script src="https://kit.fontawesome.com/2e0c59ed32.js" crossorigin="anonymous"></script>
+
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                red: '#e7002b',
+                background: '#0f0f0f'
+              },
+              fontSize: {
+                'roster': '28rem'
+              }
+            },
+            fontFamily: {
+                tungsten: 'TungstenBold',
+                rave:'rave',               
+                mya:'mya',
+                wtm:'wtm',
+                gonzi:'gonzi',
+                primary:'unrealized',
+                secondary:'Fira Sans'
+            },
+            
+          }
+        }
+    </script>
+
+</head>
+<body>
+    <nav class='w-full bg-gradient-to-b fixed from-black to-black/05 flex flex-col py-3 px-2 md:px-5 justify-center text-white top-0 z-50' id='navbar'>
+        <div class="flex flex-row w-full z-50">
+            <div class="flex md:hidden mr-5">
+                <i id="hamburger" class="fa-solid fa-bars"></i>
+            </div>
+            <div class='nav-logo-container'>
+                <a class="nav-a" href={% url 'home' %}>
+                    <img class="w-16 md:w-28" src={% static 'logo.png' %} />
+                </a>
+                
+            </div>
+            
+            <div class="nav-text-container text-xl hidden md:flex flex-row items-center">
+                <ul class="nav-ul flex">
+                    <li class="nav-li font-primary mx-5 transition ease-in delay-100">
+                        <a class="nav-a" href={% url 'home' %}>
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-li font-primary mx-5 transition ease-in delay-100">
+                        <a class="nav-a" href={% url 'roster' %}>
+                            Roster
+                        </a>
+                    </li>
+                    <li class="nav-li font-primary mx-5 transition ease-in delay-100">
+                        <a class="nav-a" href={% url 'creators' %}>
+                            Content House
+                        </a>
+                    </li>
+                    <li class="nav-li font-primary mx-5 transition ease-in delay-100">
+                        <a class="nav-a" href={% url 'events' %}>
+                            EVENTS
+                        </a>
+                    </li>
+                    <li class="nav-li font-primary mx-5 transition ease-in delay-100">
+                        <a class="nav-a" href="#">
+                            ABOUT
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <span class="text-red font-primary ml-auto text-2xl md:text-md flex items-center">#GoLethal</span>
+        </div>
+        
+        <div id="mobile-menu-container" class="hidden flex flex-col w-full h-screen bg-black fixed top-0 left-0 right-0 pt-14 items-center">
+            <ul class="nav-ul flex flex-col text-center">
+                <li class="nav-li font-primary mx-5 transition ease-in delay-100">
+                    <a class="nav-a mb-2" href={% url 'home' %}>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-li font-primary mx-5 transition ease-in delay-100">
+                    <a class="nav-a mb-2" href={% url 'roster' %}>
+                        Roster
+                    </a>
+                </li>
+                <li class="nav-li font-primary mx-5 transition ease-in delay-100">
+                    <a class="nav-a mb-2" href={% url 'creators' %}>
+                        Content House
+                    </a>
+                </li>
+                <li class="nav-li font-primary mx-5 transition ease-in delay-100">
+                    <a class="nav-a mb-2" href={% url 'events' %}>
+                        Events
+                    </a>
+                </li>
+                <li class="nav-li font-primary mx-5 transition ease-in delay-100">
+                    <a class="nav-a mb-2" href="#">
+                        About
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% block content %}
+    
+
+    {% endblock %}
+
+    <footer class="w-full bg-red rounded-t-3xl px-12 py-6">
+        <div class="flex flex-col md:flex-row font-primary justify-around items-center">
+            <div class="flex flex-col">
+                <h2 class="text-6xl tracking-wider text-white">Lethal</h2>
+                <h2 class="text-6xl tracking-wider text-black">Esports</h2>
+                <h2 class="text-6xl tracking-wider text-white">India</h2>
+            </div>
+
+            <div class="flex mt-5 md:mt-0">
+                <ul class="flex flex-col text-center md:flex-row">
+                    <li class="text-2xl mx-2 font-tungsten text-white/80 hover:text-white"><a href={% url 'home' %}>Home</a></li>
+                    <li class="text-2xl mx-2 font-tungsten text-white/80 hover:text-white"><a href={% url 'roster' %}>Roster</a></li>
+                    <li class="text-2xl mx-2 font-tungsten text-white/80 hover:text-white"><a href={% url 'creators' %}>Content House</a></li>
+                    <li class="text-2xl mx-2 font-tungsten text-white/80 hover:text-white"><a href={% url 'events' %}>Events</a></li>
+                    <li class="text-2xl mx-2 font-tungsten text-white/80 hover:text-white"><a href={% url 'about' %}>About</a></li>
+                </ul>
+            </div>
+
+            <div class="flex flex-col text-white mt-5 md:mt-0">
+                <h2 class="text-4xl font-tungsten text-black">Get in touch:</h2>
+                <h2 class="text-3xl font-tungsten underline"><a href="mailto:info@playlethal.com" target="_blank">info@playlethal.com</a></h2>
+            </div>
+        </div>
+
+        <hr class="mt-10">
+
+        <div class="flex flex-col pt-5">
+            <div class="flex justify-center">
+                <a class="mx-3 text-white" href="https://instagram.com/playlethalesport?igshid=NTdlMDg3MTY" target="_blank">
+                    <i class="fa-brands fa-instagram text-3xl transition ease-in delay-600"></i>
+                </a>
+                <a class="mx-3 text-white text-3xl" href="https://youtube.com/@LethalEsportsindia" target="_blank">
+                    <i class="fa-brands fa-youtube text-3xl transition ease-in delay-600"></i>
+                </a>
+                <a class="mx-3 text-white text-3xl transition ease-in delay-600" href="https://discord.gg/J9wsgU8Xnk" target="_blank">
+                    <i class="fa-brands fa-discord "></i>
+                </a>
+                
+            </div>
+
+            <div class="flex text-white font-tungsten justify-center text-3xl py-2">
+                Copyright Lethal Esports India 2022
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <script>
+        
+        $('.slick-carousel').slick({
+            dots: true,
+            autoplay: true,
+            arrows: false,
+            autoplaySpeed: 2000,
+        })
+
+        gsap.registerPlugin(ScrollTrigger)
+
+        $('#hamburger').on('click', () => {
+            $('#mobile-menu-container').toggleClass('hidden')
+        })
+
+    </script>
+
+    {% block scripts %}
+
+    {% endblock %}
+
+</body>
+</html>

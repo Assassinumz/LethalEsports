@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="mt-12">
+    <div class="roster-landing flex justify-center px-32 relative">
+        <h1 class="roster-heading font-primary">EV<span class="roster-heading-color">E</span>NT<span class="roster-heading-color">S</span></h1>
+        <!-- <div class="absolute top-1/3 px-3 py-2 bg-white text-6xl font-tungsten -rotate-3">Meet the Lethal family!</div>   -->
+        
+    </div>
+
+    <div class="flex flex-col md:px-32 w-full items-center">
+        <div class="roster-tabs flex justify-center">
+            <h2 class="font-tungsten text-5xl md:text-8xl text-red">Upcoming Events</h2>
+        </div>
+
+        
+        <div class="event-container w-4/5 py-10 pb-24 flex flex-col">
+            {% for i in upcoming %}
+                <div class="event-card w-full flex mb-12">
+                    <a class="w-full flex flex-col md:flex-row items-center group" href={{ i.link }}>
+                        <div class="event-card-date-container flex flex-row md:flex-col items-center justify-center w-48 font-tungsten">
+                            <div class="event-card-month hidden md:block text-4xl text-red">
+                                {{ i.date|date:"F"|upper }}
+                            </div>
+                            <div class="event-card-month block md:hidden text-5xl text-red">
+                                {{ i.date|date:"M"|upper }}
+                            </div>
+                            <div class="event-card-month text-white text-5xl md:text-6xl ml-2">
+                                {{ i.date|date:"d" }}
+                            </div>
+                            <div class="event-card-month text-5xl text-red ml-2">
+                                YEAR
+                            </div>
+                            <div class="event-card-month text-white text-5xl md:text-4xl ml-2">
+                                {{ i.date|date:"Y" }}
+                            </div>
+                        </div>
+
+                        <div class="event-card-content-container mt-2 md:mt-0  flex flex-col md:flex-row w-full h-96 md:h-60 bg-zinc-900 font-tungsten">
+                            <div class="event-card-image bg-white group-hover:bg-red w-full">
+                                <img class="scale-1 group-hover:scale-110 md:pl-10 w-full h-full transition ease-in-out delay-150" src={{ i.image }} />
+                            </div>
+
+                            <div class="event-card-content px-5 md:px-14 py-5 text-white w-full">
+                                <div class="event-card-location text-xl mb-2">
+                                    LOCATION <span class="text-red">|</span> {{ i.location }}
+                                </div>
+                                <div class="event-card-title text-4xl group-hover:text-red transition ease-in-out delay-150">
+                                    {{ i.title }}
+                                </div>
+                                <div class="event-card-text text-md font-secondary">
+                                    {{ i.description }}
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                {% empty %}
+                <h1 class="text-3xl text-white mx-auto">No Upcoming Events</h1>
+            {% endfor %}
+
+        </div>
+        
+        <div class="roster-tabs flex justify-center">
+            <h2 class="font-tungsten text-5xl md:text-8xl text-red">Past Events</h2>
+        </div>
+
+        <div class="event-container w-4/5 py-10 pb-24 flex flex-col">
+            {% for i in past %}
+                <div class="event-card w-full flex mb-12">
+                    <a class="w-full flex flex-col md:flex-row items-center group" href={{ i.link }}>
+                        <div class="event-card-date-container flex flex-row md:flex-col items-center justify-center w-48 font-tungsten">
+                            <div class="event-card-month hidden md:block text-4xl text-red">
+                                {{ i.date|date:"F"|upper }}
+                            </div>
+                            <div class="event-card-month block md:hidden text-5xl text-red">
+                                {{ i.date|date:"M"|upper }}
+                            </div>
+                            <div class="event-card-month text-white text-5xl md:text-6xl ml-2">
+                                {{ i.date|date:"d" }}
+                            </div>
+                            <div class="event-card-month text-5xl text-red ml-2">
+                                YEAR
+                            </div>
+                            <div class="event-card-month text-white text-5xl md:text-4xl ml-2">
+                                {{ i.date|date:"Y" }}
+                            </div>
+                        </div>
+
+                        <div class="event-card-content-container mt-2 md:mt-0 flex flex-col md:flex-row w-full h-96 md:h-60 bg-zinc-900 font-tungsten">
+                            <div class="event-card-image bg-white group-hover:bg-red w-full">
+                                <img class="scale-1 group-hover:scale-110 md:pl-10 w-full h-full transition ease-in-out delay-150" src={{ i.image }} />
+                            </div>
+
+                            <div class="event-card-content px-5 md:px-14 py-5 text-white w-full">
+                                <div class="event-card-location text-xl mb-2">
+                                    LOCATION <span class="text-red">|</span> {{ i.location }}
+                                </div>
+                                <div class="event-card-title text-4xl group-hover:text-red transition ease-in-out delay-150">
+                                    {{ i.title }}
+                                </div>
+                                <div class="event-card-text text-md font-secondary">
+                                    {{ i.description }}
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                {% empty %}
+                <h1 class="text-3xl text-white mx-auto">No Upcoming Events</h1>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="profile-container w-full overflow-x-hidden mt-32">
+    
+    <div class="profile-main flex flex-col md:flex-row w-full h-screen items-center px-2 md:px-0">
+        <div class="profile-image md:w-1/2 flex justify-end md:pr-12">
+            <img class="h-92" src={% static 'profile.png' %} />
+        </div>
+        <div class="profile-content mt-2 md:w-1/2 flex flex-col items-start">
+            <h1 class="text-6xl font-tungsten text-white mt-5 md:mt-0">{{ player.ign }}</h1>
+            <h1 class="text-4xl font-tungsten text-red">{{ player.game|upper }}</h1>
+
+            <p class="text-2xl font-tungsten text-white mt-6 md:mt-12">Name: {{ player.first_name }} {{ player.last_name }}</p>
+            <p class="text-2xl font-tungsten text-white mt-4">Joined: {{ player.doj }}</p>
+            <p class="text-2xl font-tungsten text-white mt-4 w-64">{{ player.description }}</p>
+
+            <div class="socials mt-10">
+                {% if player.youtube_subs %}
+                <h1 class="text-white font-tungsten text-4xl mb-2 underline">
+                    
+                    <a href={{player.youtube_link}} target="_blank">
+                    {{player.youtube_subs}} <span class="text-red">@</span> Youtube
+                    </a>
+                    
+                </h1>
+                {% endif %}
+                <h1 class="text-white font-tungsten text-4xl mb-2 underline">
+                {% if player.instagram_followers %}
+                    <a href={{player.instagram_link}} target="_blank">
+                    {{player.instagram_followers}} <span class="text-red">@</span> Instagram
+                    </a>
+                </h1>
+                {% endif %}
+            </div>
+            
+            
+        </div>
+    </div>
+   
+
+    {% if streams %}
+    <div class="player-scroll-container bg-black mt-12">
+        <h1 class="player-marquee w-full text-white text-4xl md:text-8xl py-6 md:py-12 font-tungsten whitespace-nowrap">LETHAL {{ player.first_name|upper }} <span class="text-red">"{{ player.ign|upper }}"</span> {{ player.last_name|upper }} FEED <span class="text-red">||</span> LETHAL {{ player.first_name|upper }} <span class="text-red">"{{ player.ign|upper }}"</span> {{ player.last_name|upper }} FEED <span class="text-red">||</span> LETHAL {{ player.first_name|upper }} <span class="text-red">"{{ player.ign|upper }}"</span> {{ player.last_name|upper }} FEED <span class="text-red">||</span> </h1>
+    </div>
+
+    <div class="player-streams w-full flex flex-wrap my-5 pb-10">
+        {% for x in streams %}
+            <iframe class="mx-2 my-2" width="600" height="300" src={{ x }}></iframe>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        gsap.to('.player-marquee', {
+            scrollTrigger: {
+                trigger: ".player-scroll-container",
+                scrub:true
+            },
+            x:-500,
+            duration:3
+        })
+    </script>
+{% endblock %}
