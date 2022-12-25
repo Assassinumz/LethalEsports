@@ -1,6 +1,5 @@
-from unittest.util import _MAX_LENGTH
 from django.db import models
-from traitlets import default
+
 #from djongo import models
 
 # Create your models here.
