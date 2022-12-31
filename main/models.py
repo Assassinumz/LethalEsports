@@ -30,7 +30,7 @@ class Management(models.Model):
     #streams = models.TextField(default="#")
 
     instagram_followers = models.CharField(null=True, max_length=60, blank=True)
-    instagram_link = models.CharField(max_length=600, null=True)
+    instagram_link = models.CharField(max_length=600, null=True, blank=True)
 
     youtube_subs = models.CharField(null=True, max_length=60, blank=True)
     youtube_link = models.CharField(max_length=600, null=True, blank=True)
@@ -59,8 +59,8 @@ class Player(models.Model):
     youtube_subs = models.CharField(null=True, max_length=60, blank=True)
     youtube_link = models.CharField(max_length=600, null=True, blank=True)
 
-    twitter_subs = models.CharField(null=True, max_length=60, blank=True)
-    twitter_link = models.CharField(max_length=600, null=True, blank=True)
+    twitch_subs = models.CharField(null=True, max_length=60, blank=True)
+    twitch_link = models.CharField(max_length=600, null=True, blank=True)
 
     def __str__(self):
         return self.ign

@@ -25,11 +25,24 @@
                     
                 </h1>
                 {% endif %}
-                <h1 class="text-white font-tungsten text-4xl mb-2 underline">
+
                 {% if player.instagram_followers %}
+                <h1 class="text-white font-tungsten text-4xl mb-2 underline">
+                
                     <a href={{player.instagram_link}} target="_blank">
                     {{player.instagram_followers}} <span class="text-red">@</span> Instagram
                     </a>
+
+                </h1>
+                {% endif %}
+                
+                {% if player.twitch_subs %}
+                <h1 class="text-white font-tungsten text-4xl mb-2 underline">
+                
+                    <a href={{player.twitch_link}} target="_blank">
+                    {{player.twitch_subs}} <span class="text-red">@</span> Twitch
+                    </a>
+
                 </h1>
                 {% endif %}
             </div>
