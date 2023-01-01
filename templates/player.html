@@ -5,7 +5,11 @@
     
     <div class="profile-main flex flex-col md:flex-row w-full h-screen items-center px-2 md:px-0">
         <div class="profile-image md:w-1/2 flex justify-end md:pr-12">
-            <img class="h-92" src={% static 'profile.png' %} />
+            {% if player.image == '#' %}
+                <img class="h-92" src={% static 'profile.png' %} />
+            {% else %}
+                <img class="h-92" src={{ player.image }} />
+            {% endif %}
         </div>
         <div class="profile-content mt-2 md:w-1/2 flex flex-col items-start">
             <h1 class="text-6xl font-tungsten text-white mt-5 md:mt-0">{{ player.ign }}</h1>
