@@ -26,6 +26,7 @@ class Management(models.Model):
     ign = models.CharField(default="null", max_length=60)
     doj = models.DateField()
     image = models.CharField(default="#", max_length=600)
+    role = models.CharField(null=True, max_length=60, blank=True)
     description = models.TextField(default="#")
     #streams = models.TextField(default="#")
 
@@ -53,8 +54,14 @@ class Player(models.Model):
     game = models.TextField(choices=games, default="valorant", blank=True)
     streams = models.TextField(null=True, blank=True)
 
+    
+    vlr_link = models.CharField(max_length=600, null=True, blank=True)
+
     instagram_followers = models.CharField(null=True, max_length=60, blank=True)
     instagram_link = models.CharField(max_length=600, null=True, blank=True)
+    
+    twitter_followers = models.CharField(null=True, max_length=60, blank=True)
+    twitter_link = models.CharField(max_length=600, null=True, blank=True)
 
     youtube_subs = models.CharField(null=True, max_length=60, blank=True)
     youtube_link = models.CharField(max_length=600, null=True, blank=True)

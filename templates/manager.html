@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="profile-container w-full overflow-x-hidden mt-32">
+<div class="profile-container w-full overflow-x-hidden mt-32 pb-32">
     
-    <div class="profile-main flex w-full h-screen">
+    <div class="profile-main flex items-center w-full h-screen">
         <div class="profile-image w-1/2 flex justify-end pr-12">
-            <img class="h-32" src={% static 'profile.png' %} />
+            {% if player.image == '#' %}
+                <img class="h-32" src={% static 'profile.png' %} />
+            {% else %}
+                <img class="manager-profile-picture h-50" src={{ player.image }} />
+            {% endif %}
         </div>
         <div class="profile-content w-1/2 flex flex-col items-start">
             <h1 class="text-6xl font-tungsten text-white">{{ player.ign }}</h1>
-            <h1 class="text-4xl font-tungsten text-red">MANAGER</h1>
+            <h1 class="text-4xl font-tungsten text-red">{{ player.role }}</h1>
 
             <p class="text-2xl font-tungsten text-white mt-12">Name: {{ player.first_name }} {{ player.last_name }}</p>
             <p class="text-2xl font-tungsten text-white mt-4">Joined: {{ player.doj }}</p>
@@ -20,7 +24,7 @@
    
 
     {% if streams %}
-    <div class="player-scroll-container mt-12 bg-black mt-12">
+    <div class="player-scroll-container mt-12 bg-black">
         <h1 class="player-marquee w-full text-white text-8xl py-12 font-tungsten whitespace-nowrap">LETHAL {{ player.first_name|upper }} <span class="text-red">"{{ player.ign|upper }}"</span> {{ player.last_name|upper }} FEED <span class="text-red">||</span> LETHAL {{ player.first_name|upper }} <span class="text-red">"{{ player.ign|upper }}"</span> {{ player.last_name|upper }} FEED <span class="text-red">||</span> LETHAL {{ player.first_name|upper }} <span class="text-red">"{{ player.ign|upper }}"</span> {{ player.last_name|upper }} FEED <span class="text-red">||</span> </h1>
     </div>
 

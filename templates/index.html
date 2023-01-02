@@ -11,9 +11,15 @@
     <div class="slick-carousel">
         {% for x in carousel %}
             <div class="h-full">
+                {% if x.link == '#' %}
+                <a class="h-full" href={{ x.link }}>
+                    <img class="w-full carousel-image" src={{ x.image }} />
+                </a>
+                {% else %}
                 <a class="h-full" href={{ x.link }} target="_blank">
                     <img class="w-full carousel-image" src={{ x.image }} />
                 </a>
+                {% endif %}
             </div>
         {% endfor %}
         
@@ -110,12 +116,12 @@
         <div class="management-content mb-4">
             <h1 class="text-6xl md:text-8xl text-red font-primary">Management</h1>
         </div>
-        <div class="management-cards mt-8 w-full flex flex-row flex-wrap justify-around">
+        <div class="management-cards mt-8 w-full flex flex-row flex-wrap justify-start px-10">
             {% for y in management %}
-                <div class="management-card profile-card h-80 w-72 bg-white mx-2 my-2 relative justify-between items-center group hover:scale-125 transition ease-in-out delay-150">
+                <div class="management-card profile-card h-80 w-72 bg-white mb-10 mx-8 my-2 relative justify-between items-center group hover:scale-125 transition ease-in-out delay-150">
                     <a class="flex justify-center w-full h-full relative items-end" href={% url 'manager' id=y.id %}>
-                        <h2 class="self-start group-hover:text-red transition ease-in-out delay-150 font-tungsten text-2xl absolute top-2 left-3 z-10">{{ y.first_name }} {{ y.last_name }}</h2>
-                        <img class="w-64 grayscale group-hover:grayscale-0 transition ease-in-out delay-150 relative bottom-0" src={{ y.image }} />
+                        <h2 class="self-start group-hover:text-red transition ease-in-out delay-150 font-tungsten text-4xl absolute top-2 left-3 z-10">{{ y.first_name }} {{ y.last_name }}</h2>
+                        <img class="w-48 grayscale group-hover:grayscale-0 transition ease-in-out delay-150 relative bottom-0" src={{ y.image }} />
                     </a>
                 </div>
             {% endfor %}
