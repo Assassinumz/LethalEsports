@@ -46,7 +46,7 @@ body {
 }
 
 .nav-a {
-    --s: 0.1em;   /* the thickness of the line */
+    --s: 4px;   /* the thickness of the line */
     --c: #e7002b; /* the color */
     
     color: #0000;
